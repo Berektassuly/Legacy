@@ -1,0 +1,20 @@
+{
+  "name": "legacy-protocol-sbt",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "yarn run ts-mocha -p ./tsconfig.json -t 1000000 anchor/tests/**/*.ts"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.28.0",
+    "@solana/spl-token": "^0.3.11",
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.0.4"
+  }
+}

@@ -1,20 +1,8 @@
-[package]
-name = "sbt-program"
-version = "0.1.0"
-description = "Created with Anchor"
-edition = "2021"
+[workspace]
+members = [
+    "programs/sbt-program"
+]
+resolver = "2"
 
-[lib]
-crate-type = ["cdylib", "lib"]
-name = "sbt_program"
-
-[features]
-no-entrypoint = []
-no-idl = []
-no-log-ix-name = []
-cpi = ["no-entrypoint"]
-default = []
-
-[dependencies]
-anchor-lang = "0.28.0"
-anchor-spl = "0.28.0"
+[profile.release]
+overflow-checks = true

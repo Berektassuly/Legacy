@@ -12,6 +12,7 @@
     "mocha": "^10.2.0"
   },
   "devDependencies": {
+    "@coral-xyz/anchor-cli": "^0.31.2",
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
     "ts-mocha": "^10.0.0",

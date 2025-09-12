@@ -1,89 +1,107 @@
 "use client"
 
-import { Twitter, Github, Linkedin } from "lucide-react"
+import Link from "next/link"
+import { Github, Linkedin } from "lucide-react"
 
 export function FooterSection() {
   return (
-    <footer className="w-full max-w-[1320px] mx-auto px-5 flex flex-col md:flex-row justify-between items-start gap-8 md:gap-0 py-10 md:py-[70px]">
-      {/* Left Section: Logo, Description, Social Links */}
-      <div className="flex flex-col justify-start items-start gap-8 p-4 md:p-8">
-        <div className="flex gap-3 items-stretch justify-center">
-          <div className="text-center text-foreground text-xl font-semibold leading-4">Pointer</div>
+    <footer className="w-full border-t border-white/10 bg-transparent">
+      <div className="max-w-[1320px] mx-auto px-5 py-10 md:py-14 flex flex-col md:flex-row gap-10 md:gap-16">
+        {/* Left: brand + tagline + socials */}
+        <div className="min-w-[240px] flex-1">
+          <div className="flex items-center gap-2">
+            <span className="text-foreground text-xl font-semibold">Legacy</span>
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Verifiable credentials. Owned by you.
+          </p>
+
+          <div className="mt-4 flex items-center gap-3">
+            <a
+              href="https://github.com/Berektassuly"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full ring-1 ring-white/10 hover:bg-white/5 transition"
+            >
+              <Github className="h-4 w-4 text-muted-foreground" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mukhammedali-berektassuly-aa8a43364/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full ring-1 ring-white/10 hover:bg-white/5 transition"
+            >
+              <Linkedin className="h-4 w-4 text-muted-foreground" />
+            </a>
+          </div>
         </div>
-        <p className="text-foreground/90 text-sm font-medium leading-[18px] text-left">Coding made effortless</p>
-        <div className="flex justify-start items-start gap-3">
-          <a href="#" aria-label="Twitter" className="w-4 h-4 flex items-center justify-center">
-            <Twitter className="w-full h-full text-muted-foreground" />
-          </a>
-          <a href="#" aria-label="GitHub" className="w-4 h-4 flex items-center justify-center">
-            <Github className="w-full h-full text-muted-foreground" />
-          </a>
-          <a href="#" aria-label="LinkedIn" className="w-4 h-4 flex items-center justify-center">
-            <Linkedin className="w-full h-full text-muted-foreground" />
-          </a>
+
+        {/* Right: links */}
+        <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="space-y-3">
+            <h3 className="text-sm text-muted-foreground font-medium">Product</h3>
+            <ul className="space-y-2">
+              <li><Link href="#features-section" className="text-sm text-foreground hover:underline">Features</Link></li>
+              <li><Link href="#testimonials-section" className="text-sm text-foreground hover:underline">Testimonials</Link></li>
+              <li><Link href="#faq-section" className="text-sm text-foreground hover:underline">FAQ</Link></li>
+              <li><Link href="#pricing-section" className="text-sm text-foreground hover:underline">Pricing</Link></li>
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-sm text-muted-foreground font-medium">Company</h3>
+            <ul className="space-y-2">
+              {/* при необходимости поставишь реальные роуты */}
+              <li><span className="text-sm text-foreground/70">About</span></li>
+              <li><span className="text-sm text-foreground/70">Careers</span></li>
+              <li>
+                <a
+                  href="mailto:hello@legacy.app?subject=Contact%20Legacy"
+                  className="text-sm text-foreground hover:underline"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-sm text-muted-foreground font-medium">Resources</h3>
+            <ul className="space-y-2">
+              <li><Link href="/docs" className="text-sm text-foreground hover:underline">Documentation</Link></li>
+              <li><a href="https://github.com/Berektassuly" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground hover:underline">API / GitHub</a></li>
+              <li>
+                <a
+                  href="mailto:hello@legacy.app?subject=Legacy%20Support"
+                  className="text-sm text-foreground hover:underline"
+                >
+                  Support
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      {/* Right Section: Product, Company, Resources */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 p-4 md:p-8 w-full md:w-auto">
-        <div className="flex flex-col justify-start items-start gap-3">
-          <h3 className="text-muted-foreground text-sm font-medium leading-5">Product</h3>
-          <div className="flex flex-col justify-end items-start gap-2">
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Features
+
+      {/* Bottom bar */}
+      <div className="border-t border-white/10">
+        <div className="max-w-[1320px] mx-auto px-5 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Legacy. All rights reserved.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Built by{" "}
+            <a
+              href="https://www.linkedin.com/in/mukhammedali-berektassuly-aa8a43364/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:no-underline"
+            >
+              Mukhamedali Berektassuly
             </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Pricing
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Integrations
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Real-time Previews
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Multi-Agent Coding
-            </a>
-          </div>
-        </div>
-        <div className="flex flex-col justify-start items-start gap-3">
-          <h3 className="text-muted-foreground text-sm font-medium leading-5">Company</h3>
-          <div className="flex flex-col justify-center items-start gap-2">
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              About us
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Our team
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Careers
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Brand
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Contact
-            </a>
-          </div>
-        </div>
-        <div className="flex flex-col justify-start items-start gap-3">
-          <h3 className="text-muted-foreground text-sm font-medium leading-5">Resources</h3>
-          <div className="flex flex-col justify-center items-start gap-2">
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Terms of use
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              API Reference
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Documentation
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Community
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Support
-            </a>
-          </div>
+          </p>
         </div>
       </div>
     </footer>

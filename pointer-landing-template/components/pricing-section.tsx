@@ -27,7 +27,7 @@ export function PricingSection() {
 
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button asChild className="rounded-full px-6">
-              <Link href="/waitlist">Join waitlist</Link>
+              <Link href="https://t.me/Gamma_Myxa">Join waitlist</Link>
             </Button>
             <Button asChild variant="outline" className="rounded-full px-6">
               <a href="mailto:hello@legacy.app?subject=Legacy%20Pricing">Contact sales</a>

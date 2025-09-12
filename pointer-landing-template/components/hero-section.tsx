@@ -1,15 +1,20 @@
+// components/hero-section.tsx
+"use client"
+
 import React from "react"
-import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import { Header } from "./header"
-import Link from "next/link"
+import { TypeAnimation } from "react-type-animation"
+
+// Строка импорта изображения УДАЛЕНА
 
 export function HeroSection() {
   return (
     <section
-      className="flex flex-col items-center text-center relative mx-auto rounded-2xl overflow-hidden my-6 py-0 px-4
-         w-full h-[400px] md:w-[1220px] md:h-[600px] lg:h-[810px] md:px-0"
+      className="flex flex-col items-start text-left relative mx-auto rounded-2xl overflow-hidden my-6 py-0 px-4
+         w-full h-auto md:w-[1220px] lg:h-[810px] md:px-0"
     >
-      {/* SVG Background */}
+      {/* SVG Background (без изменений) */}
       <div className="absolute inset-0 z-0">
         <svg
           width="100%"
@@ -19,6 +24,7 @@ export function HeroSection() {
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid slice"
         >
+          {/* ... ваш длинный SVG код остается здесь ... */}
           <g clipPath="url(#clip0_186_1134)">
             <mask
               id="mask0_186_1134"
@@ -432,25 +438,51 @@ export function HeroSection() {
         </svg>
       </div>
 
-      {/* Header positioned at top of hero container */}
-      <div className="absolute top-0 left-0 right-0 z-20">
-        <Header />
-      </div>
+      <div className="w-full h-full flex flex-col justify-between z-10">
+        <div>
+          <Header />
+          <div className="relative space-y-4 md:space-y-5 lg:space-y-6 mt-12 md:mt-16 lg:mt-20 px-4 md:px-16 lg:px-24">
+            <h1 className="text-foreground text-3xl md:text-4xl lg:text-6xl font-semibold leading-tight">
+              Connecting <br />
+              {/* Контейнер фиксирует размеры по «самому длинному» варианту */}
+              <span className="relative inline-block align-top">
+                {/* Невидимый плейсхолдер занимает место, чтобы не было сдвигов */}
+                <span aria-hidden className="invisible block">
+                  {/* Вставлен самый длинный вариант для резервирования места */}
+                  Credentialing Agencies
+                  <br />
+                  To Governing Boards
+                </span>
 
-      <div className="relative z-10 space-y-4 md:space-y-5 lg:space-y-6 mb-6 md:mb-7 lg:mb-9 max-w-md md:max-w-[500px] lg:max-w-[588px] mt-16 md:mt-[120px] lg:mt-[160px] px-4">
-        <h1 className="text-foreground text-3xl md:text-4xl lg:text-6xl font-semibold leading-tight">
-          Unleash the Power of AI Agents
-        </h1>
-        <p className="text-muted-foreground text-base md:text-base lg:text-lg font-medium leading-relaxed max-w-lg mx-auto">
-          Accelerate your development workflow with intelligent AI agents that write, review, and optimize your code.
-        </p>
+                {/* Анимируемая надпись поверх, не влияя на layout */}
+                <span className="absolute inset-0">
+                  <TypeAnimation
+                    sequence={[
+                      "Credentialing Agencies\nTo Governing Boards",
+                      2000,
+                      "Cryptography Profiles\nTo Social Platforms",
+                      2000,
+                      "Intelligent AI Agents\nTo Your Workflow",
+                      2000,
+                    ]}
+                    wrapper="span"
+                    cursor={false} // курсор отключен, чтобы не влиять на ширину
+                    repeat={Infinity}
+                    style={{ whiteSpace: "pre-line", display: "block" }}
+                    className="text-teal-400"
+                  />
+                </span>
+              </span>
+            </h1>
+            <p className="text-muted-foreground text-base md:text-lg font-normal leading-relaxed max-w-2xl">
+              Ensure trust and prevent fraud with verifiable, soulbound credentials for Universities. Build transparent
+              reputation networks and protect against fake institutions through community-driven reporting. Empower HR
+              teams with reliable CVs and enable secure document storage across healthcare, logistics, and beyond — all
+              while keeping ownership of data in the hands of individuals, not corporations.
+            </p>
+          </div>
+        </div>
       </div>
-
-      <Link href="https://vercel.com/home" target="_blank" rel="noopener noreferrer">
-        <Button className="relative z-10 bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-3 rounded-full font-medium text-base shadow-lg ring-1 ring-white/10">
-          Signup for free
-        </Button>
-      </Link>
     </section>
   )
 }

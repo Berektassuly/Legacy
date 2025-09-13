@@ -1,6 +1,5 @@
-import Dashboard from "@/components/kokonutui/dashboard"
+import { redirect } from 'next/navigation'
 
-export default async function DashboardPage() {
-
-  return <Dashboard />
+export default function DashboardPage() {
+  redirect('/overview/dashboard')
 }

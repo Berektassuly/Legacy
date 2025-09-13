@@ -1,20 +1,46 @@
 
-import TrustEcosystemSection from "@/components/trust-ecosystem-section"
-import { SocialProof } from "@/components/social-proof"
+import OrganizationsTable from "./organizations-table";
+import CredentialsTable from "./credentials-table";
 
-export default function Content() {
+// Define types for our data to ensure type safety
+interface Organization {
+  id: string;
+  name: string;
+  wallet_address: string;
+  is_verified: boolean;
+  website_url: string;
+}
+
+interface Credential {
+  id: string;
+  title: string;
+  recipient_wallet_address: string;
+  transaction_hash: string;
+  organizations: {
+    name: string;
+  };
+}
+
+interface ContentProps {
+  organizations: Organization[];
+  credentials: Credential[];
+}
+
+export default function Content({ organizations, credentials }: ContentProps) {
   return (
-    <div className="space-y-16">
+    <div className="space-y-12">
       <section className="text-center space-y-4">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-          Ensure trust and prevent fraud with verifiable, soulbound credentials for Universities.
+          Web3 Credentials Dashboard
         </h1>
         <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-          Build transparent reputation networks and protect against fake institutions through community-driven reporting. Empower HR teams with reliable CVs and enable secure document storage across healthcare, logistics, and beyond — all while keeping ownership of data in the hands of individuals, not corporations.
+          Monitor verified organizations and the soulbound credentials they issue.
         </p>
       </section>
-      <SocialProof />
-      <TrustEcosystemSection />
+
+      <OrganizationsTable organizations={organizations} />
+      <CredentialsTable credentials={credentials} />
     </div>
-  )
+  );
 }
+

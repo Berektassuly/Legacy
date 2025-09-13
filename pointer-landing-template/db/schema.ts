@@ -10,6 +10,7 @@ export const users = pgTable("users", {
   hashedPassword: text("hashed_password"),
   createdAt: timestamp("created_at").defaultNow(),
   isAdmin: boolean("is_admin").default(false),
+  isCompany: boolean("is_company").default(false),
 });
 
 export const accounts = pgTable("accounts", {

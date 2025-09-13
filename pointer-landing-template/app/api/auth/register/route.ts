@@ -5,7 +5,7 @@ import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function POST(req: Request) {
-  const { email, password, name } = await req.json();
+  const { email, password, name, isCompany } = await req.json();
   if (!email || !password) {
     return NextResponse.json({ error: "Email and password required" }, { status: 400 });
   }
@@ -14,6 +14,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Email already in use" }, { status: 400 });
   }
   const hashedPassword = createHash("sha256").update(password).digest("hex");
-  await db.insert(users).values({ email, name: name ?? null, hashedPassword });
+  await db
+    .insert(users)
+    .values({ email, name: name ?? null, hashedPassword, isCompany: !!isCompany });
   return NextResponse.json({ success: true });
 }

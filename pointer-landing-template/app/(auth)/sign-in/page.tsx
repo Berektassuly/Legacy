@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Fingerprint } from "lucide-react";
 
 export default function SignInPage() {
   const [email, setEmail] = useState("");
@@ -20,12 +21,15 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-6">
+    <div className="flex min-h-screen items-center justify-center p-6 bg-gray-950 text-white">
       <div className="w-full max-w-sm">
-        <Card>
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl">Sign In</CardTitle>
-            <CardDescription>Enter your email and password</CardDescription>
+        <Card className="bg-gray-900">
+          <CardHeader className="space-y-4 text-center">
+            <Fingerprint className="mx-auto h-12 w-12 text-primary" />
+            <div className="space-y-1">
+              <CardTitle className="text-2xl">Sign In</CardTitle>
+              <CardDescription>Enter your email and password</CardDescription>
+            </div>
           </CardHeader>
           <CardContent>
             <form onSubmit={onSubmit} className="grid gap-4">

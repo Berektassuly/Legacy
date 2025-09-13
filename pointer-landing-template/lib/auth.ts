@@ -17,7 +17,13 @@ export const authOptions: NextAuthOptions = {
         if (!user?.hashedPassword) return null;
         const hashed = createHash("sha256").update(creds.password).digest("hex");
         return hashed === user.hashedPassword
-          ? { id: user.id, name: user.name ?? undefined, email: user.email, image: user.image ?? undefined }
+          ? {
+              id: user.id,
+              name: user.name ?? undefined,
+              email: user.email,
+              image: user.image ?? undefined,
+              isCompany: user.isCompany ?? undefined,
+            }
           : null;
       },
     }),
@@ -27,7 +33,7 @@ export const authOptions: NextAuthOptions = {
       if (user?.email) {
         const existing = await db.select().from(users).where(eq(users.email, user.email));
         if (existing.length === 0) {
-          await db.insert(users).values({ email: user.email, name: user.name ?? null });
+          await db.insert(users).values({ email: user.email, name: user.name ?? null, isCompany: false });
         }
       }
       return true;

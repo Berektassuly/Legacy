@@ -1,6 +1,25 @@
-import { clerkMiddleware } from '@clerk/nextjs/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-export default clerkMiddleware();
+const isPublicRoute = createRouteMatcher(['/'])
+
+export default clerkMiddleware(async (auth, req: NextRequest) => {
+  const { isAuthenticated, redirectToSignIn } = await auth()
+
+  // Если не авторизован и не публичный роут → редирект на SignIn
+  if (!isAuthenticated && !isPublicRoute(req)) {
+    return redirectToSignIn({ returnBackUrl: req.url })
+  }
+
+  // Если авторизован и зашёл на "/", редирект на "/dashboard"
+  if (isAuthenticated && req.nextUrl.pathname === '/') {
+    const dashboardUrl = new URL('/dashboard', req.url)
+    return NextResponse.redirect(dashboardUrl)
+  }
+
+  // Авторизован и не публичный роут → пропускаем
+  return NextResponse.next()
+})
 
 export const config = {
   matcher: [
@@ -9,4 +28,4 @@ export const config = {
     // Always run for API routes
     '/(api|trpc)(.*)',
   ],
-};
+}

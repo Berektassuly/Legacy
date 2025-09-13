@@ -76,8 +76,6 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Link href="/waitlist" className="hidden md:block">
-          
              <SignedOut>
               <SignInButton />
               <SignUpButton>
@@ -89,8 +87,6 @@ export function Header() {
             <SignedIn>
               <UserButton />
             </SignedIn>
-          </Link>
-
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon" className="text-foreground">

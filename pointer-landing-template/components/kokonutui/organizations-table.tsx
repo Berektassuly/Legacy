@@ -1,3 +1,4 @@
+
 // @/components/kokonutui/organizations-table.tsx
 import {
     Table,
@@ -59,7 +60,6 @@ import {
             </TableBody>
           </Table>
         </div>
-      </div>
     );
   }
   

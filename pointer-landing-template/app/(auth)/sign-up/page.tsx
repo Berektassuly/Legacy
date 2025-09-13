@@ -23,6 +23,8 @@ export default function SignUpPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password, isCompany }),
     });
+    console.log("res1")
+    console.log(res)
     if (res.ok) router.push("/sign-in");
   }
 

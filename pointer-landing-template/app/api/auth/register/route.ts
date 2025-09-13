@@ -14,8 +14,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Email already in use" }, { status: 400 });
   }
   const hashedPassword = createHash("sha256").update(password).digest("hex");
-  await db
+  const res = await db
     .insert(users)
     .values({ email, name: name ?? null, hashedPassword, isCompany: !!isCompany });
+  console.log(" ")
+  console.log(res)
+
   return NextResponse.json({ success: true });
 }

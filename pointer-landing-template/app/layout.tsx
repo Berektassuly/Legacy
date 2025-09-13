@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import {
-  ClerkProvider
+  ClerkProvider,
 } from '@clerk/nextjs'
 
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -17,7 +17,6 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
-
 export const metadata: Metadata = {
   title: 'Legacy',
   description: 'Built for Solana Day Hackathon',
@@ -30,11 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className="dark">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-          </ThemeProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

@@ -5,6 +5,13 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 
 type NavItem = { name: string; href: `#${string}` }
 
@@ -70,9 +77,18 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <Link href="/waitlist" className="hidden md:block">
-            <Button className="rounded-full px-6 bg-secondary text-secondary-foreground hover:bg-secondary/90">
-              Join waitlist
-            </Button>
+          
+             <SignedOut>
+              <SignInButton />
+              <SignUpButton>
+                <button className="bg-[#6c47ff] text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </Link>
 
           <Sheet open={open} onOpenChange={setOpen}>

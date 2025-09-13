@@ -22,11 +22,7 @@ import {
   
   export default function OrganizationsTable({ organizations }: Props) {
     return (
-      <div>
-        <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-          Verified Organizations
-        </h2>
-        <div className="rounded-lg border">
+      <div className="rounded-lg border">
           <Table>
             <TableHeader>
               <TableRow>

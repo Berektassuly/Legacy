@@ -1,6 +1,19 @@
 
+"use client";
+
+import { useState } from 'react';
 import OrganizationsTable from "./organizations-table";
 import CredentialsTable from "./credentials-table";
+import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { AddOrganizationForm } from './add-organization-form';
 
 // Define types for our data to ensure type safety
 interface Organization {
@@ -27,8 +40,10 @@ interface ContentProps {
 }
 
 export default function Content({ organizations, credentials }: ContentProps) {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
-    <div className="space-y-12">
+    <div className="space-y-8">
       <section className="text-center space-y-4">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
           Web3 Credentials Dashboard
@@ -38,7 +53,29 @@ export default function Content({ organizations, credentials }: ContentProps) {
         </p>
       </section>
 
-      <OrganizationsTable organizations={organizations} />
+      <div>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+            Verified Organizations
+          </h2>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button>Add Organization</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add a New Organization</DialogTitle>
+                <DialogDescription>
+                  Fill in the details below to add a new organization to the trust network.
+                </DialogDescription>
+              </DialogHeader>
+              <AddOrganizationForm closeDialog={() => setIsDialogOpen(false)} />
+            </DialogContent>
+          </Dialog>
+        </div>
+        <OrganizationsTable organizations={organizations} />
+      </div>
+      
       <CredentialsTable credentials={credentials} />
     </div>
   );

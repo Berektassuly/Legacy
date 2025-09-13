@@ -28,3 +28,13 @@ export interface Payment {
   amount_usdc: number
   created_at: string
 }
+
+export interface Project {
+  id: string
+  org_id: string
+  type: string
+  name: string
+  description?: string
+  metadata_uri?: string
+  sbt_mint?: string
+}

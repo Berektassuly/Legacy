@@ -81,16 +81,16 @@ export default function Sidebar() {
                   Overview
                 </div>
                 <div className="space-y-1">
-                  <NavItem href="#" icon={Home}>
+                  <NavItem href="/overview/dashboard" icon={Home}>
                     Dashboard
                   </NavItem>
-                  <NavItem href="#" icon={BarChart2}>
+                  <NavItem href="/overview/analytics" icon={BarChart2}>
                     Analytics
                   </NavItem>
-                  <NavItem href="#" icon={Building2}>
+                  <NavItem href="/overview/organization" icon={Building2}>
                     Organization
                   </NavItem>
-                  <NavItem href="#" icon={Folder}>
+                  <NavItem href="/overview/projects" icon={Folder}>
                     Projects
                   </NavItem>
                 </div>

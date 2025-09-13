@@ -2,7 +2,7 @@
 
 import { Bell, ChevronRight } from "lucide-react"
 import Link from "next/link"
-import { ThemeToggle } from "@/components/theme-toggle"
+import ConnectWallet from "@/components/connect-wallet"
 import {
   SignInButton,
   SignUpButton,
@@ -50,7 +50,7 @@ export default function TopNav() {
           <Bell className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 dark:text-gray-300" />
         </button>
 
-        <ThemeToggle />
+        <ConnectWallet />
 
         <SignedOut>
           <SignInButton />

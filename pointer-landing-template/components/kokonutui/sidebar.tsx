@@ -120,13 +120,13 @@ export default function Sidebar() {
                   Finance
                 </div>
                 <div className="space-y-1">
-                  <NavItem href="#" icon={Wallet}>
+                  <NavItem href="/finance/transactions" icon={Wallet}>
                     Transactions
                   </NavItem>
-                  <NavItem href="#" icon={Receipt}>
+                  <NavItem href="/finance/invoices" icon={Receipt}>
                     Invoices
                   </NavItem>
-                  <NavItem href="#" icon={CreditCard}>
+                  <NavItem href="/finance/payments" icon={CreditCard}>
                     Payments
                   </NavItem>
                 </div>

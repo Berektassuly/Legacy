@@ -1,39 +1,20 @@
-import { Calendar, CreditCard, Wallet } from "lucide-react"
-import List01 from "./list-01"
-import List02 from "./list-02"
-import List03 from "./list-03"
 
-export default function () {
+import TrustEcosystemSection from "@/components/trust-ecosystem-section"
+import { SocialProof } from "@/components/social-proof"
+
+export default function Content() {
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-6 flex flex-col border border-gray-200 dark:border-[#1F1F23]">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 text-left flex items-center gap-2 ">
-            <Wallet className="w-3.5 h-3.5 text-zinc-900 dark:text-zinc-50" />
-            Accounts
-          </h2>
-          <div className="flex-1">
-            <List01 className="h-full" />
-          </div>
-        </div>
-        <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-6 flex flex-col border border-gray-200 dark:border-[#1F1F23]">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 text-left flex items-center gap-2">
-            <CreditCard className="w-3.5 h-3.5 text-zinc-900 dark:text-zinc-50" />
-            Recent Transactions
-          </h2>
-          <div className="flex-1">
-            <List02 className="h-full" />
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-6 flex flex-col items-start justify-start border border-gray-200 dark:border-[#1F1F23]">
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 text-left flex items-center gap-2">
-          <Calendar className="w-3.5 h-3.5 text-zinc-900 dark:text-zinc-50" />
-          Upcoming Events
-        </h2>
-        <List03 />
-      </div>
+    <div className="space-y-16">
+      <section className="text-center space-y-4">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+          Ensure trust and prevent fraud with verifiable, soulbound credentials for Universities.
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          Build transparent reputation networks and protect against fake institutions through community-driven reporting. Empower HR teams with reliable CVs and enable secure document storage across healthcare, logistics, and beyond — all while keeping ownership of data in the hands of individuals, not corporations.
+        </p>
+      </section>
+      <SocialProof />
+      <TrustEcosystemSection />
     </div>
   )
 }

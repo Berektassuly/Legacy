@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -51,6 +52,9 @@ export default function SignInPage() {
                 Sign In
               </Button>
             </form>
+            <div className="mt-4 text-sm text-center">
+              Don\'t have an account? <Link href="/sign-up" className="underline">Sign Up</Link>
+            </div>
           </CardContent>
         </Card>
       </div>
